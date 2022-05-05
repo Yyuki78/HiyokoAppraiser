@@ -5,7 +5,7 @@ using TMPro;
 
 public class HiyokoInformation : MonoBehaviour
 {
-    [SerializeField] GameObject GameManager;
+    private GameObject GameManager;
     private GameManager _manager;
 
     private HiyokoMove _move;
@@ -24,6 +24,7 @@ public class HiyokoInformation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager = GameObject.FindGameObjectWithTag("GameManager");
         _manager = GameManager.GetComponent<GameManager>();
         _move = GetComponent<HiyokoMove>();
         _numText = GetComponentInChildren<TextMeshPro>();
@@ -39,11 +40,11 @@ public class HiyokoInformation : MonoBehaviour
             case 1:
                 if (attribute1 == 1)
                 {
-                    _move.White = true;
+                    _move.White = false;
                 }
                 else
                 {
-                    _move.White = false;
+                    _move.White = true;
                 }
                 if (rnd1 == 1)
                 {
@@ -131,16 +132,11 @@ public class HiyokoInformation : MonoBehaviour
                 }
                 break;
             case 2:
-                if (Number % 2 == 0)
+                if (Number == 2)
                 {
                     attribute2 = 1;
+                    break;
                 }
-                else
-                {
-                    attribute2 = 2;
-                }
-                break;
-            case 3:
                 for (int i = 2; i < Number; ++i)
                 {
                     if (Number % i == 0)
@@ -149,6 +145,16 @@ public class HiyokoInformation : MonoBehaviour
                         break;
                     }
                     attribute2 = 1;
+                }
+                break;
+            case 3:
+                if (Number >= 50)
+                {
+                    attribute2 = 1;
+                }
+                else
+                {
+                    attribute2 = 2;
                 }
                 break;
             default:
@@ -179,11 +185,5 @@ public class HiyokoInformation : MonoBehaviour
                 Ranch = 4;
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -54,8 +54,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GameOver.cs" />
+    <Compile Include="Assets\Scripts\GameStartUI.cs" />
     <Compile Include="Assets\Scripts\HiyokoInformation.cs" />
     <Compile Include="Assets\Scripts\HiyokoMove.cs" />
+    <Compile Include="Assets\Scripts\HiyokoRanch.cs" />
+    <Compile Include="Assets\Scripts\HiyokoSpawner.cs" />
+    <Compile Include="Assets\Scripts\MoveSubCamera.cs" />
+    <Compile Include="Assets\Scripts\OpenGate.cs" />
+    <Compile Include="Assets\Scripts\TermsDisplay.cs" />
+    <Compile Include="Assets\Scripts\Timer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -726,6 +734,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="CopoCopo.TextMeshProAnimator.Runtime.csproj">
+      <Project>{045F7E2F-402C-D8EC-CA1E-AE9391472F8B}</Project>
+      <Name>CopoCopo.TextMeshProAnimator.Runtime</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
