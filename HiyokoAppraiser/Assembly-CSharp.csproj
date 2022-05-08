@@ -53,17 +53,33 @@
     <UnityVersion>2019.4.31f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ChangeModeUI.cs" />
+    <Compile Include="Assets\Scripts\EasyModeUI.cs" />
+    <Compile Include="Assets\Scripts\EscUI.cs" />
+    <Compile Include="Assets\Scripts\GameClear.cs" />
+    <Compile Include="Assets\Scripts\GameContinueButton.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
+    <Compile Include="Assets\Scripts\GameSettingUI.cs" />
     <Compile Include="Assets\Scripts\GameStartUI.cs" />
+    <Compile Include="Assets\Scripts\HPUI.cs" />
     <Compile Include="Assets\Scripts\HiyokoInformation.cs" />
     <Compile Include="Assets\Scripts\HiyokoMove.cs" />
     <Compile Include="Assets\Scripts\HiyokoRanch.cs" />
     <Compile Include="Assets\Scripts\HiyokoSpawner.cs" />
+    <Compile Include="Assets\Scripts\LevelUI.cs" />
     <Compile Include="Assets\Scripts\MoveSubCamera.cs" />
     <Compile Include="Assets\Scripts\OpenGate.cs" />
+    <Compile Include="Assets\Scripts\SceneButtons.cs" />
+    <Compile Include="Assets\Scripts\SizeChangeUI.cs" />
+    <Compile Include="Assets\Scripts\SoundOption.cs" />
     <Compile Include="Assets\Scripts\TermsDisplay.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
+    <Compile Include="Assets\Scripts\TitleManager.cs" />
+    <Compile Include="Assets\Scripts\Tutrial.cs" />
+    <Compile Include="Assets\Scripts\TutrialHiyokoMove.cs" />
+    <Compile Include="Assets\Scripts\UltSettingUI.cs" />
+    <Compile Include="Assets\Scripts\UltUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

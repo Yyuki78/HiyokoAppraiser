@@ -32,9 +32,15 @@ public class HiyokoMove : MonoBehaviour
     private float turnSpeed = 0.4f;//画像の切り替え速度
     public bool White = false;//HiyokoInformationで変更
     public bool Sound = false;
+    public bool Vanish = false;
 
     private Vector3 rememberVelocity;
     private bool timeOver = false;
+
+    private GameObject GameManagerr;
+    private GameManager _manager;
+
+    private AudioSource _audio;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +48,11 @@ public class HiyokoMove : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         float rnd = Random.Range(-2.0f, 2f);
         _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        GameManagerr = GameObject.FindGameObjectWithTag("GameManager");
+        _manager = GameManagerr.GetComponent<GameManager>();
+
+        _audio = GetComponent<AudioSource>();
 
         if (transform.position.y > 2)
         {
@@ -75,6 +86,12 @@ public class HiyokoMove : MonoBehaviour
     {
         Moving();
         LifeTime();
+        if (_manager.Vanish && Vanish)
+        {
+            if (state == State.Finish || state == State.Die) return;
+            _manager.correct();
+            Destroy(this.gameObject);
+        }
     }
 
     void Moving()
@@ -105,6 +122,7 @@ public class HiyokoMove : MonoBehaviour
     {
         if (timeOver == false) return;
         if (state != State.Normal) return;
+        _manager.incorrect();
         incorrect();
     }
 
@@ -156,12 +174,17 @@ public class HiyokoMove : MonoBehaviour
     private IEnumerator PickAnimtion()
     {
         transform.localScale = new Vector3(1.3f, 1.3f, 1f);
+        if (Sound)
+        {
+            _audio.Play();
+        }
         while (true)
         {
             if (state != State.Pick)
             {
                 this.transform.localRotation = new Quaternion(0, 0, 0, 0);
                 transform.localScale = new Vector3(1f, 1f, 1f);
+                _audio.Stop();
                 yield break;
             }
             for (int i = 0; i < 12; i++)
@@ -247,7 +270,7 @@ public class HiyokoMove : MonoBehaviour
     {
         if (state == State.Finish || state == State.Die) return;
         state = State.Finish;
-        this.gameObject.layer = 0;
+        this.gameObject.layer = 10;
         Debug.Log("正解!!!");
     }
 

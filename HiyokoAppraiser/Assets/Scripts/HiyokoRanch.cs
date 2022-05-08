@@ -31,4 +31,10 @@ public class HiyokoRanch : MonoBehaviour
             hm.incorrect();
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer != 10) return;
+        collision.gameObject.SetActive(false);
+    }
 }

@@ -19,13 +19,28 @@ public class OpenGate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        level = GameManager.currentLevel;
+        if (GameManager.GameMode == 1)
+        {
+            level = 1;
+        }
+        else if (GameManager.GameMode == 2)
+        {
+            level = GameManager.currentLevel2;
+        }
+        else
+        {
+            level = GameManager.currentLevel3;
+            if (GameManager.currentLevel3 == 4 || GameManager.currentLevel3 == 5)
+            {
+                level = 6;
+            }
+        }
         StartCoroutine(GateAnimetion());
     }
 
     private IEnumerator GateAnimetion()
     {
-        //yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f);
         switch (level)
         {
             case 1:
@@ -40,27 +55,36 @@ public class OpenGate : MonoBehaviour
                 break;
             case 3:
                 StartCoroutine(GateOpen1(1));
-                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(10f);
                 StartCoroutine(GateOpen1(2));
                 yield return new WaitForSeconds(5f);
                 StartCoroutine(GateOpen2(1));
                 break;
             case 4:
                 StartCoroutine(GateOpen1(1));
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(10f);
                 StartCoroutine(GateOpen1(2));
-                yield return new WaitForSeconds(8f);
+                yield return new WaitForSeconds(5f);
                 StartCoroutine(GateOpen2(1));
                 yield return new WaitForSeconds(5f);
                 StartCoroutine(GateOpen2(2));
                 break;
             case 5:
                 StartCoroutine(GateOpen1(1));
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(10f);
                 StartCoroutine(GateOpen1(2));
                 yield return new WaitForSeconds(5f);
                 StartCoroutine(GateOpen2(1));
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(5f);
+                StartCoroutine(GateOpen2(2));
+                break;
+            case 6:
+                StartCoroutine(GateOpen1(1));
+                yield return new WaitForSeconds(5f);
+                StartCoroutine(GateOpen1(2));
+                yield return new WaitForSeconds(5f);
+                StartCoroutine(GateOpen2(1));
+                yield return new WaitForSeconds(5f);
                 StartCoroutine(GateOpen2(2));
                 break;
             default:

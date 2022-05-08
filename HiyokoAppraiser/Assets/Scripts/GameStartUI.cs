@@ -16,7 +16,19 @@ public class GameStartUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        level = GameManager.currentLevel;
+        if (GameManager.GameMode == 1)
+        {
+            level = GameManager.currentLevel;
+        }
+        else if (GameManager.GameMode == 2)
+        {
+            level = GameManager.currentLevel2;
+        }
+        else
+        {
+            level = GameManager.currentLevel3;
+        }
+
         GameManagerr = GameObject.FindGameObjectWithTag("GameManager");
         _manager = GameManagerr.GetComponent<GameManager>();
 
@@ -54,7 +66,17 @@ public class GameStartUI : MonoBehaviour
                 break;
         }
 
-        Invoke(nameof(SetActive), 3f);
+        if (GameManager.FirstLevel)
+        {
+            _start.text = "ゲームスタート!";
+            GameManager.FirstLevel = false;
+        }
+        else
+        {
+            _start.text = "レベルスタート!";
+        }
+
+        Invoke(nameof(SetActive), 5f);
     }
 
     private void SetActive()
